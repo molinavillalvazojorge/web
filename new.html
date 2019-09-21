@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
 
-    <div>
-<h1> hello nigga,Te Recomndamos Las Nuevas OFF WHITE X NIKE AIR FORCE 1 "MCA BLUE"
+    <div id="titulo">
+<h1 class="image"> hello nigga,Te Recomndamos Las Nuevas OFF WHITE X NIKE AIR FORCE 1 "MCA BLUE"
     Un Par Iconico De Los 90s,Con El Un Diseño Tan Caracteristico De Virgil Abloh.</h1>
     </div>
 
     <div>
-        <p>Texto</p>
+        <p class="text">Texto</p>
     </div>
+    <script>
+    function animateCSS(element, animationName, callback)
+    {
+        const node = document.querySelector(element)
+        node.classList.add('animated', animationName);
+
+        function handleanimationEnd()
+        { 
+            node.classList.remove('animated',animationName);
+            node.removeEventListener('animationend', handleanimationEnd);
+
+            if(typeof callback === 'function') callback()
+
+        }
+        
+        node.addEventListener('animationend', handleanimationEnd)
+    }
+
+function startInfiniteAnimation(element,animationName)
+{
+    const node = document.querySelector(element);
+    node.classList.add('animated','infinite',animationName);
+}
+ 
+ function stopInfiniteAnimation(element, animationName)
+ {
+    const node = document.querySelector(element);
+    node.classList.remove('animated','infinite',animationName);
+ }  
+ 
+ $(document).ready(function()
+{
+    $("#titulo").mouseenter(function()
+    {
+        animateCSS(".image",'bounce');
+        startInfiniteAnimation(".text",'shake');
+    });
+
+    $("#titulo").mouseleave(function()
+    {
+        stopInfiniteAnimation(".text",'shake');
+    })
+}); 
+
+    </script>
 
 </body>
 </html>
